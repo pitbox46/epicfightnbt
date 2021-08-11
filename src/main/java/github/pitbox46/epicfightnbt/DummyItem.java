@@ -1,6 +1,5 @@
-package github.pitbox46.fightnbtintegration;
+package github.pitbox46.epicfightnbt;
 
-import maninhouse.epicfight.capabilities.item.SwordCapability;
 import net.minecraft.item.IItemTier;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;

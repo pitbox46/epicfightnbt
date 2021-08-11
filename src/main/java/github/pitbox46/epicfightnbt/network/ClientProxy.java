@@ -1,4 +1,4 @@
-package github.pitbox46.fightnbtintegration.network;
+package github.pitbox46.epicfightnbt.network;
 
 import net.minecraftforge.common.MinecraftForge;
 

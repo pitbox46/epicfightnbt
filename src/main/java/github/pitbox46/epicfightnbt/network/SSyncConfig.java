@@ -1,7 +1,7 @@
-package github.pitbox46.fightnbtintegration.network;
+package github.pitbox46.epicfightnbt.network;
 
 import com.google.gson.JsonObject;
-import github.pitbox46.fightnbtintegration.Config;
+import github.pitbox46.epicfightnbt.Config;
 import net.minecraft.network.PacketBuffer;
 import net.minecraft.util.JSONUtils;
 import net.minecraftforge.fml.network.NetworkEvent;

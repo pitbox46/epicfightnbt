@@ -1,4 +1,4 @@
-package github.pitbox46.fightnbtintegration.network;
+package github.pitbox46.epicfightnbt.network;
 
 import net.minecraft.network.PacketBuffer;
 import net.minecraft.util.ResourceLocation;
@@ -10,7 +10,7 @@ import java.util.function.Function;
 public class PacketHandler {
     private static final String PROTOCOL_VERSION = "3.2.1";
     public static SimpleChannel CHANNEL = NetworkRegistry.newSimpleChannel(
-            new ResourceLocation("fightnbtintegration", "main"),
+            new ResourceLocation("epicfightnbt", "main"),
             () -> PROTOCOL_VERSION,
             PROTOCOL_VERSION::equals,
             PROTOCOL_VERSION::equals);

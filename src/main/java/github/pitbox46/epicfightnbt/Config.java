@@ -55,10 +55,35 @@ public class Config {
                 for(String value: DICTIONARY.keySet()) {
                     values.append(value).append(", ");
                 }
-
-                JsonObject jsonObject = new JsonObject();
-                jsonObject.addProperty("__comment", "Values: " + values);
-                writer.write(GSON.toJson(jsonObject));
+                String json = "{\n" +
+                        "  \"__comment\": \"Values: " + values + "\",\n" +
+                        "  \"double/head_left\": {\n" +
+                        "    \"double/basic_hammer_left\": \"axe\",\n" +
+                        "    \"double/basic_axe_left\": \"axe\",\n" +
+                        "    \"double/basic_pickaxe_left\": \"pickaxe\",\n" +
+                        "    \"double/hoe_left\": \"hoe\",\n" +
+                        "    \"double/claw_left\": \"axe\",\n" +
+                        "    \"double/adze_left\": \"axe\",\n" +
+                        "    \"double/sickle_left\": \"axe\"\n" +
+                        "  },\n" +
+                        "  \"sword/blade\": {\n" +
+                        "    \"sword/basic_blade\": \"sword\",\n" +
+                        "    \"sword/heavy_blade\": \"greatsword\",\n" +
+                        "    \"sword/machete\": \"tachi\",\n" +
+                        "    \"sword/short_blade\": \"dagger\"\n" +
+                        "  },\n" +
+                        "  \"single/head\": {\n" +
+                        "    \"single/spearhead\": \"spear\",\n" +
+                        "    \"single/basic_shovel\": \"shovel\"\n" +
+                        "  },\n" +
+                        "  \"crossbow/stock\": {\n" +
+                        "    \"crossbow/basic_stock\": \"crossbow\"\n" +
+                        "  },\n" +
+                        "  \"bow/string\": {\n" +
+                        "    \"bow/basic_string\": \"bow\"\n" +
+                        "  }\n" +
+                        "}";
+                writer.write(json);
                 writer.close();
             }
         } catch (IOException e) {

@@ -124,6 +124,6 @@ public class Config {
                 }
             }
         }
-        return null;
+        return CapabilityItem.EMPTY;
     }
 }

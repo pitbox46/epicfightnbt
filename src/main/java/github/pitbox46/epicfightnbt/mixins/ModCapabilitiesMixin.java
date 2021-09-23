@@ -10,13 +10,15 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
+@SuppressWarnings("rawtypes")
+
 @Mixin(value = ModCapabilities.class, remap = false)
 public class ModCapabilitiesMixin {
-    @Inject(at = @At(value = "HEAD"), method = "stackCapabilityGetter(Lnet/minecraft/item/ItemStack;)Lmaninhouse/epicfight/capabilities/item/CapabilityItem;", cancellable = true)
-    private static void onStackCapabilityGetter(ItemStack stack, CallbackInfoReturnable<CapabilityItem> cir) {
-        if(stack.isEmpty()) cir.setReturnValue(null);
-        CapabilityItem cap = stack.getCapability(ModCapabilities.CAPABILITY_ITEM, null).orElse(null);
-        if(cap == null) {
+    @Inject(at = @At(value = "HEAD"), method = "getItemStackCapability(Lnet/minecraft/item/ItemStack;)Lmaninhouse/epicfight/capabilities/item/CapabilityItem;", cancellable = true)
+    private static void onGetItemStackCapability(ItemStack stack, CallbackInfoReturnable<CapabilityItem> cir) {
+        if(stack.isEmpty()) cir.setReturnValue( CapabilityItem.EMPTY );
+        CapabilityItem cap = stack.getCapability(ModCapabilities.CAPABILITY_ITEM, null).orElse( CapabilityItem.EMPTY );
+        if(cap == CapabilityItem.EMPTY) {
             cir.setReturnValue(Config.findWeaponByNBT(stack));
         }
     }

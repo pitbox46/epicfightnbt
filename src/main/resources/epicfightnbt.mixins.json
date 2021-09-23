@@ -5,7 +5,6 @@
   "compatibilityLevel": "JAVA_8",
   "refmap": "epicfightnbt.refmap.json",
   "mixins": [
-    "ControllEngineMixin",
     "ModCapabilitiesMixin"
   ],
   "client": [

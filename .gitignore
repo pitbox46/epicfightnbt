@@ -122,3 +122,4 @@ bin/main/pack.mcmeta
 .settings/org.eclipse.jdt.core.prefs
 .project
 .classpath
+bin/main/META-INF/mods.toml

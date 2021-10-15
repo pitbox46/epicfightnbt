@@ -59,6 +59,6 @@ side = "BOTH"
 [[dependencies.epicfightnbt]]
 modId = "epicfight"
 mandatory = true
-versionRange = "[5.0.6, 6)"
+versionRange = "[5.1.0, 6)"
 ordering = "NONE"
 side = "BOTH"

@@ -4,14 +4,14 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import maninhouse.epicfight.capabilities.item.*;
-import maninhouse.epicfight.config.CapabilityConfig;
 import net.minecraft.item.*;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.util.JSONUtils;
 import net.minecraftforge.fml.loading.FileUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import yesman.epicfight.capabilities.item.CapabilityItem;
+import yesman.epicfight.config.CapabilityConfig;
 
 import java.io.*;
 import java.nio.file.Path;
@@ -33,7 +33,7 @@ public class Config {
         DICTIONARY.put("greatsword", (stack) -> CapabilityConfig.WeaponType.GREATSWORD.get(stack.getItem()));
         DICTIONARY.put("hoe", (stack) -> CapabilityConfig.WeaponType.HOE.get(stack.getItem()));
         DICTIONARY.put("katana", (stack) -> CapabilityConfig.WeaponType.KATANA.get(stack.getItem()));
-        DICTIONARY.put("knuckle", (stack) -> CapabilityConfig.WeaponType.KNUCKLE.get(stack.getItem()));
+        DICTIONARY.put("fist", (stack) -> CapabilityConfig.WeaponType.FIST.get(stack.getItem()));
         DICTIONARY.put("longsword", (stack) -> CapabilityConfig.WeaponType.LONGSWORD.get(stack.getItem()));
         DICTIONARY.put("pickaxe", (stack) -> CapabilityConfig.WeaponType.PICKAXE.get(stack.getItem()));
         DICTIONARY.put("shovel", (stack) -> CapabilityConfig.WeaponType.SHOVEL.get(stack.getItem()));

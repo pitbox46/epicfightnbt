@@ -33,13 +33,14 @@ public class Config {
         DICTIONARY.put("greatsword", (stack) -> CapabilityConfig.WeaponType.GREATSWORD.get(stack.getItem()));
         DICTIONARY.put("hoe", (stack) -> CapabilityConfig.WeaponType.HOE.get(stack.getItem()));
         DICTIONARY.put("katana", (stack) -> CapabilityConfig.WeaponType.KATANA.get(stack.getItem()));
-        DICTIONARY.put("fist", (stack) -> CapabilityConfig.WeaponType.FIST.get(stack.getItem()));
         DICTIONARY.put("longsword", (stack) -> CapabilityConfig.WeaponType.LONGSWORD.get(stack.getItem()));
         DICTIONARY.put("pickaxe", (stack) -> CapabilityConfig.WeaponType.PICKAXE.get(stack.getItem()));
         DICTIONARY.put("shovel", (stack) -> CapabilityConfig.WeaponType.SHOVEL.get(stack.getItem()));
         DICTIONARY.put("spear", (stack) -> CapabilityConfig.WeaponType.SPEAR.get(stack.getItem()));
         DICTIONARY.put("sword", (stack) -> CapabilityConfig.WeaponType.SWORD.get(stack.getItem()));
         DICTIONARY.put("tachi", (stack) -> CapabilityConfig.WeaponType.TACHI.get(stack.getItem()));
+        DICTIONARY.put("shield", (stack) -> CapabilityConfig.WeaponType.SHIELD.get(stack.getItem()));
+        DICTIONARY.put("trident", (stack) -> CapabilityConfig.WeaponType.TRIDENT.get(stack.getItem()));
     }
 
     public static File jsonFile;

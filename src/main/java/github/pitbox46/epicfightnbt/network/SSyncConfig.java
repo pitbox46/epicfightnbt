@@ -22,7 +22,8 @@ public class SSyncConfig implements IPacket {
 
     @Override
     public void writePacketData(PacketBuffer buf) {
-        buf.writeString(this.json.toString());
+        String json = this.json.toString();
+        buf.writeString(this.json.toString(), json.length());
     }
 
     @Override

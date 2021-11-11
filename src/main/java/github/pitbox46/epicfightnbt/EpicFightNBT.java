@@ -28,7 +28,7 @@ public class EpicFightNBT {
 
     @SubscribeEvent
     public void onServerStarting(FMLServerStartingEvent event) {
-        Config.init(event.getServer().func_240776_a_(new FolderName("epicfightnbt")));
+        Config.init(event.getServer().func_240776_a_(new FolderName("serverconfig")));
     }
 
     @SubscribeEvent

@@ -25,22 +25,25 @@ public class Config {
 
     public static final Map<String, Function<ItemStack, CapabilityItem>> DICTIONARY = new HashMap<>();
     static {
-        DICTIONARY.put("axe", (stack) -> CapabilityConfig.WeaponType.AXE.get(stack.getItem()));
-        DICTIONARY.put("bow", (stack) -> CapabilityConfig.WeaponType.BOW.get(stack.getItem()));
-        DICTIONARY.put("crossbow", (stack) -> CapabilityConfig.WeaponType.CROSSBOW.get(stack.getItem()));
-        DICTIONARY.put("dagger", (stack) -> CapabilityConfig.WeaponType.DAGGER.get(stack.getItem()));
-        DICTIONARY.put("fist", (stack) -> CapabilityConfig.WeaponType.FIST.get(stack.getItem()));
-        DICTIONARY.put("greatsword", (stack) -> CapabilityConfig.WeaponType.GREATSWORD.get(stack.getItem()));
-        DICTIONARY.put("hoe", (stack) -> CapabilityConfig.WeaponType.HOE.get(stack.getItem()));
-        DICTIONARY.put("katana", (stack) -> CapabilityConfig.WeaponType.KATANA.get(stack.getItem()));
-        DICTIONARY.put("longsword", (stack) -> CapabilityConfig.WeaponType.LONGSWORD.get(stack.getItem()));
-        DICTIONARY.put("pickaxe", (stack) -> CapabilityConfig.WeaponType.PICKAXE.get(stack.getItem()));
-        DICTIONARY.put("shovel", (stack) -> CapabilityConfig.WeaponType.SHOVEL.get(stack.getItem()));
-        DICTIONARY.put("spear", (stack) -> CapabilityConfig.WeaponType.SPEAR.get(stack.getItem()));
-        DICTIONARY.put("sword", (stack) -> CapabilityConfig.WeaponType.SWORD.get(stack.getItem()));
-        DICTIONARY.put("tachi", (stack) -> CapabilityConfig.WeaponType.TACHI.get(stack.getItem()));
-        DICTIONARY.put("shield", (stack) -> CapabilityConfig.WeaponType.SHIELD.get(stack.getItem()));
-        DICTIONARY.put("trident", (stack) -> CapabilityConfig.WeaponType.TRIDENT.get(stack.getItem()));
+        for(CapabilityConfig.WeaponType type : CapabilityConfig.WeaponType.values()) {
+            DICTIONARY.put(type.name().toLowerCase(), (stack) -> type.get(stack.getItem()));
+        }
+//        DICTIONARY.put("axe", (stack) -> CapabilityConfig.WeaponType.AXE.get(stack.getItem()));
+//        DICTIONARY.put("bow", (stack) -> CapabilityConfig.WeaponType.BOW.get(stack.getItem()));
+//        DICTIONARY.put("crossbow", (stack) -> CapabilityConfig.WeaponType.CROSSBOW.get(stack.getItem()));
+//        DICTIONARY.put("dagger", (stack) -> CapabilityConfig.WeaponType.DAGGER.get(stack.getItem()));
+//        DICTIONARY.put("fist", (stack) -> CapabilityConfig.WeaponType.FIST.get(stack.getItem()));
+//        DICTIONARY.put("greatsword", (stack) -> CapabilityConfig.WeaponType.GREATSWORD.get(stack.getItem()));
+//        DICTIONARY.put("hoe", (stack) -> CapabilityConfig.WeaponType.HOE.get(stack.getItem()));
+//        DICTIONARY.put("katana", (stack) -> CapabilityConfig.WeaponType.KATANA.get(stack.getItem()));
+//        DICTIONARY.put("longsword", (stack) -> CapabilityConfig.WeaponType.LONGSWORD.get(stack.getItem()));
+//        DICTIONARY.put("pickaxe", (stack) -> CapabilityConfig.WeaponType.PICKAXE.get(stack.getItem()));
+//        DICTIONARY.put("shovel", (stack) -> CapabilityConfig.WeaponType.SHOVEL.get(stack.getItem()));
+//        DICTIONARY.put("spear", (stack) -> CapabilityConfig.WeaponType.SPEAR.get(stack.getItem()));
+//        DICTIONARY.put("sword", (stack) -> CapabilityConfig.WeaponType.SWORD.get(stack.getItem()));
+//        DICTIONARY.put("tachi", (stack) -> CapabilityConfig.WeaponType.TACHI.get(stack.getItem()));
+//        DICTIONARY.put("shield", (stack) -> CapabilityConfig.WeaponType.SHIELD.get(stack.getItem()));
+//        DICTIONARY.put("trident", (stack) -> CapabilityConfig.WeaponType.TRIDENT.get(stack.getItem()));
     }
 
     public static File jsonFile;

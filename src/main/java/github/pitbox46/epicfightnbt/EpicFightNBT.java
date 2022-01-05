@@ -34,7 +34,9 @@ public class EpicFightNBT {
     @SubscribeEvent
     public void onPlayerConnect(PlayerEvent.PlayerLoggedInEvent event) {
         if(event.getPlayer() instanceof ServerPlayerEntity) {
-            PacketHandler.CHANNEL.send(PacketDistributor.PLAYER.with(() -> (ServerPlayerEntity) event.getPlayer()), new SSyncConfig(Config.readFile()));
+            SSyncConfig config = Config.configFileToSSyncConfig();
+            if (config != null)
+                PacketHandler.CHANNEL.send(PacketDistributor.PLAYER.with(() -> (ServerPlayerEntity) event.getPlayer()), config);
         }
     }
 }

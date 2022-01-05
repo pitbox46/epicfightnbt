@@ -7,27 +7,26 @@ import net.minecraft.util.JSONUtils;
 import net.minecraftforge.fml.network.NetworkEvent;
 
 public class SSyncConfig implements IPacket {
-    public JsonObject json;
+    public String json;
 
-    public SSyncConfig(JsonObject json) {
+    public SSyncConfig(String json) {
         this.json = json;
     }
     public SSyncConfig() {}
 
     @Override
     public SSyncConfig readPacketData(PacketBuffer buf) {
-        this.json = JSONUtils.fromJson(buf.readString());
+        json = buf.readString();
         return this;
     }
 
     @Override
     public void writePacketData(PacketBuffer buf) {
-        String json = this.json.toString();
-        buf.writeString(this.json.toString(), json.length());
+        buf.writeString(json, json.length());
     }
 
     @Override
     public void processPacket(NetworkEvent.Context ctx) {
-        Config.readJson(this.json);
+        Config.readConfig(this.json);
     }
 }

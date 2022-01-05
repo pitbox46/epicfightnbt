@@ -1,0 +1,134 @@
+{
+  "weapons": [
+    {
+      "type": "double/head_left",
+      "subtypes": [
+        {
+          "armor_ignorance": 20,
+          "hit_at_once": 0,
+          "impact": 4,
+          "weapon_type": "axe",
+          "nbt_value": "double/basic_hammer_left"
+        },
+        {
+          "armor_ignorance": 0,
+          "hit_at_once": 1,
+          "impact": 2,
+          "weapon_type": "axe",
+          "nbt_value": "double/basic_axe_left"
+        },
+        {
+          "armor_ignorance": 30,
+          "hit_at_once": 0,
+          "impact": 3,
+          "weapon_type": "pickaxe",
+          "nbt_value": "double/basic_pickaxe_left"
+        },
+        {
+          "armor_ignorance": 0,
+          "hit_at_once": 1,
+          "impact": 1,
+          "weapon_type": "hoe",
+          "nbt_value": "double/hoe_left"
+        },
+        {
+          "armor_ignorance": 20,
+          "hit_at_once": 0,
+          "impact": 4,
+          "weapon_type": "axe",
+          "nbt_value": "double/claw_left"
+        },
+        {
+          "armor_ignorance": 0,
+          "hit_at_once": 1,
+          "impact": 2,
+          "weapon_type": "axe",
+          "nbt_value": "double/adze_left"
+        },
+        {
+          "armor_ignorance": 0,
+          "hit_at_once": 1,
+          "impact": 2,
+          "weapon_type": "axe",
+          "nbt_value": "double/sickle_left"
+        }
+      ]
+    },
+    {
+      "type": "sword/blade",
+      "subtypes": [
+        {
+          "armor_ignorance": 0,
+          "hit_at_once": 2,
+          "impact": 2,
+          "weapon_type": "sword",
+          "nbt_value": "sword/basic_blade"
+        },
+        {
+          "armor_ignorance": 0,
+          "hit_at_once": 3,
+          "impact": 1,
+          "weapon_type": "greatsword",
+          "nbt_value": "sword/heavy_blade"
+        },
+        {
+          "armor_ignorance": 0,
+          "hit_at_once": 1,
+          "impact": 3,
+          "weapon_type": "tachi",
+          "nbt_value": "sword/machete"
+        },
+        {
+          "armor_ignorance": 50,
+          "hit_at_once": 0,
+          "impact": 0,
+          "weapon_type": "dagger",
+          "nbt_value": "sword/short_blade"
+        }
+      ]
+    },
+    {
+      "type": "single/head",
+      "subtypes": [
+        {
+          "armor_ignorance": 30,
+          "hit_at_once": 0,
+          "impact": 2,
+          "weapon_type": "spear",
+          "nbt_value": "single/spearhead"
+        },
+        {
+          "armor_ignorance": 0,
+          "hit_at_once": 0,
+          "impact": 4,
+          "weapon_type": "shovel",
+          "nbt_value": "single/basic_shovel"
+        }
+      ]
+    },
+    {
+      "type": "crossbow/stock",
+      "subtypes": [
+        {
+          "armor_ignorance": 20,
+          "hit_at_once": 0,
+          "impact": 3,
+          "weapon_type": "crossbow",
+          "nbt_value": "crossbow/basic_stock"
+        }
+      ]
+    },
+    {
+      "type": "bow/string",
+      "subtypes": [
+        {
+          "armor_ignorance": 10,
+          "hit_at_once": 0,
+          "impact": 3,
+          "weapon_type": "bow",
+          "nbt_value": "bow/basic_string"
+        }
+      ]
+    }
+  ]
+}

@@ -10,6 +10,8 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.item.*;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.fml.loading.FMLConfig;
+import net.minecraftforge.fml.loading.FMLPaths;
 import net.minecraftforge.fml.loading.FileUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -39,11 +41,13 @@ public class Config {
     public static NBTCategorySchema JSON_MAP;
 
     public static void init(Path folder) {
-        File file = new File(FileUtils.getOrCreateDirectory(folder, "serverconfig").toFile(), "epicfightnbt.json");
+        jsonFile = new File(FileUtils.getOrCreateDirectory(folder, "serverconfig").toFile(), "epicfightnbt.json");
         try {
-            if (file.createNewFile()) {
-                InputStreamReader defaults = new InputStreamReader(Objects.requireNonNull(Thread.currentThread().getContextClassLoader().getResourceAsStream("assets/epicfightnbt/epicfightnbt.json")));
-                FileOutputStream writer = new FileOutputStream(file, false);
+            if (jsonFile.createNewFile()) {
+                Path defaultConfigPath = FMLPaths.GAMEDIR.get().resolve(FMLConfig.defaultConfigPath()).resolve("epicfightnbt.json");
+                InputStreamReader defaults = new InputStreamReader(Files.exists(defaultConfigPath)? Files.newInputStream(defaultConfigPath) :
+                        Objects.requireNonNull(Thread.currentThread().getContextClassLoader().getResourceAsStream("assets/epicfightnbt/epicfightnbt.json")));
+                FileOutputStream writer = new FileOutputStream(jsonFile, false);
                 int read;
                 while ((read = defaults.read()) != -1) {
                     writer.write(read);
@@ -54,7 +58,8 @@ public class Config {
         } catch (IOException error) {
             LOGGER.warn(error.getMessage());
         }
-        readConfig(jsonFile = file);
+
+        readConfig(jsonFile);
     }
 
     public static SSyncConfig configFileToSSyncConfig() {

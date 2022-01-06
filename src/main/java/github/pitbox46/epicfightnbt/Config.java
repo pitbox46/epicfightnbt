@@ -2,14 +2,10 @@ package github.pitbox46.epicfightnbt;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import github.pitbox46.epicfightnbt.JSONSchema.NBTCategorySchema;
-import github.pitbox46.epicfightnbt.JSONSchema.NBTConditionSchema;
-import github.pitbox46.epicfightnbt.JSONSchema.WeaponSchema;
+import com.google.gson.reflect.TypeToken;
 import github.pitbox46.epicfightnbt.network.SSyncConfig;
-import net.minecraft.client.Minecraft;
 import net.minecraft.item.*;
 import net.minecraft.nbt.CompoundNBT;
-import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.loading.FMLConfig;
 import net.minecraftforge.fml.loading.FMLPaths;
 import net.minecraftforge.fml.loading.FileUtils;
@@ -28,7 +24,6 @@ import java.util.function.Function;
 
 public class Config {
     private static final Logger LOGGER = LogManager.getLogger();
-    private static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();
 
     public static final Map<String, Function<ItemStack, CapabilityItem>> DICTIONARY = new HashMap<>();
     static {
@@ -38,7 +33,7 @@ public class Config {
     }
 
     public static File jsonFile;
-    public static NBTCategorySchema JSON_MAP;
+    public static Map<String, Map<String, WeaponSchema>> JSON_MAP;
 
     public static void init(Path folder) {
         jsonFile = new File(FileUtils.getOrCreateDirectory(folder, "serverconfig").toFile(), "epicfightnbt.json");
@@ -72,27 +67,36 @@ public class Config {
     }
 
     public static void readConfig(String config) {
-        JSON_MAP = new Gson().fromJson(config, NBTCategorySchema.class);
+        JSON_MAP = new Gson().fromJson(config, new TypeToken<Map<String, Map<String, WeaponSchema>>>(){}.getType());
     }
 
     public static void readConfig(File path) {
         try (Reader reader = new FileReader(path)) {
-            JSON_MAP = new Gson().fromJson(reader, NBTCategorySchema.class);
+            JSON_MAP = new Gson().fromJson(reader, new TypeToken<Map<String, Map<String, WeaponSchema>>>(){}.getType());
         } catch (IOException e) {
             e.printStackTrace();
-            JSON_MAP = new NBTCategorySchema();
+            JSON_MAP = new HashMap<>();
         }
+    }
+
+    class WeaponSchema {
+
+        public double armor_ignorance = 0;
+        public int hit_at_once = 0;
+        public double impact = 0;
+        public String weapon_type = "sword";
     }
 
     public static CapabilityItem findWeaponByNBT(ItemStack stack) {
         if(stack.hasTag()) {
             CompoundNBT tag = stack.getTag();
             for (String key : tag.keySet()) {
-                for (NBTConditionSchema condition : JSON_MAP.weapons) {
-                    if (condition.type.equals(key)) {
+                for (Map.Entry<String, Map<String, WeaponSchema>> condition : JSON_MAP.entrySet()) {
+                    if (condition.getKey().equals(key)) {
                         String value = tag.getString(key);
-                        for (WeaponSchema weapon : condition.subtypes) {
-                            if (weapon.nbt_value.equals(value)) {
+                        for (Map.Entry<String, WeaponSchema> weaponEntry : condition.getValue().entrySet()) {
+                            if (weaponEntry.getKey().equals(value)) {
+                                WeaponSchema weapon = weaponEntry.getValue();
                                 CapabilityItem toReturn = DICTIONARY.get(weapon.weapon_type).apply(stack);
                                 toReturn.setConfigFileAttribute(
                                         weapon.armor_ignorance, weapon.impact, weapon.hit_at_once,
